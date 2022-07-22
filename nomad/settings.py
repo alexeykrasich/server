@@ -98,11 +98,11 @@ if DEBUG:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
-            'NAME': 'nomad' if DEBUG else os.environ.get("DATABASE_NAME"),
-            'USER': 'nomad' if DEBUG else os.environ.get("DATABASE_USER"),
-            'PASSWORD': 'pass' if DEBUG else os.environ.get("DATABASE_PASS"),
-            'HOST': 'localhost' if DEBUG else os.environ.get("DATABASE_HOST"),
-            'PORT': '5432',
+            'NAME': os.environ.get('POSTGRES_DB', 'nomad'),
+            'USER': os.environ.get('POSTGRES_USER', 'nomad'),
+            'PASSWORD': os.environ.get('POSTGRES_PASSWORD', 'pass'),
+            'HOST': os.environ.get('POSTGRES_HOST', 'localhost'),
+            'PORT': 5432,
         }
     }
 else:
